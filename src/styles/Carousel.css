@@ -1,14 +1,40 @@
 .carousel-parent {
-    height: 70vh;
+    height: 70vh !important;
     width: 100% !important;
     overflow: hidden !important;
     background-color: black;
     position: relative;
 }
 
+@media screen and (max-width: 568px) {
+    .carousel-parent {
+        height: 27vh !important;
+    }
+
+    .input-box {
+        position: absolute;
+        min-width:100% !important;
+        top: 20% !important;
+        z-index:2;
+        left: 5% !important;
+    }
+
+    .input-box input {
+        font-size: 0.1rem;
+        min-width: 80% !important;
+    }
+
+    .input-box button {
+        min-width: 20% !important;
+        background-color: black;
+        height: 100%;
+    }
+}
+
 .input-box {
     position: absolute;
-    width: 40%;
+    width: 100%;
+    overflow: hidden;
     height: 40px;
     z-index: 2;
     left: 34%;
@@ -17,12 +43,21 @@
 
 .input-box input {
     opacity: 0.5;
+    height: 100%;
     font-size: 1.3rem;
+}
+
+.input-box button {
+    height: 100%;
+    font-size: 1.3rem;
+    outline: none;
+    width: 50px;
+    border: none;
 }
 
 .input-box input:focus {
     opacity: 1;
-    border: none;
+    outline: none;
 }
 
 .carousel-inner {
