@@ -1,0 +1,41 @@
+.carousel-parent {
+    height: 70vh;
+    width: 100% !important;
+    overflow: hidden !important;
+    background-color: black;
+    position: relative;
+}
+
+.input-box {
+    position: absolute;
+    width: 40%;
+    height: 40px;
+    z-index: 2;
+    left: 34%;
+    top: 50%;
+}
+
+.input-box input {
+    opacity: 0.5;
+    font-size: 1.3rem;
+}
+
+.input-box input:focus {
+    opacity: 1;
+    border: none;
+}
+
+.carousel-inner {
+    height: 100% !important;
+    overflow: hidden;
+}
+
+.carousel-item {
+    height: 100% !important;
+}
+
+.carousel-item img {
+    height: 100%;
+    opacity: 0.3;
+    width: 100% !important;
+}
