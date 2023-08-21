@@ -4,20 +4,22 @@ const Carousel = () => {
     return (
         <div className='carousel-parent'>
             <div className='input-box'>
-                <input type="text" className='mx-2' />
-                <button type='submit'><i class="fa-solid fa-magnifying-glass fa-shake"></i></button>
+                <form action="">
+                    <input type="text" className='mx-2' />
+                    <button type='submit'><i class="fa-solid fa-magnifying-glass fa-shake"></i></button>
+                </form>
             </div>
-            
+
             <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <img src="images/Biryani.webp" class="d-block w-100" alt="..."/>
+                        <img src="https://source.unsplash.com/random/900x700/?burger" class="d-block w-100" alt="..." />
                     </div>
                     <div class="carousel-item">
-                        <img src="images/pasta.jpg" class="d-block w-100" alt="..."/>
+                        <img src="https://source.unsplash.com/random/900x700/?pasta" class="d-block w-100" alt="..." />
                     </div>
                     <div class="carousel-item">
-                        <img src="images/Burger.jpg" class="d-block w-100" alt="..."/>
+                        <img src="https://source.unsplash.com/random/900x700/?noodles" class="d-block w-100" alt="..." />
                     </div>
                 </div>
             </div>
