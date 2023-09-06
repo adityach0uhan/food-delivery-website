@@ -2,9 +2,9 @@ const express = require('express');
 const DataBaseConnect = require('./db');
 const app = express();
 
+DataBaseConnect();
 app.get('/', () => {
     console.log("Working");
-    DataBaseConnect();
 })
 
 app.listen(3000, () => {
