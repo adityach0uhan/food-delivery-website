@@ -1,15 +1,16 @@
 const mongoose = require("mongoose" );
 require('dotenv').config();
 const uri = process.env.MongoDB_URI;
-// const uri = "mongodb://localhost:27017"
 
-// Connect to MongoDB using Mongoose
-function DataBaseConnect() {
+
+async function DataBaseConnect() {
     console.log("Connnection in progress")
-    mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
+  await  mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => {
-        console.log('Connected ');
-    }) .catch((err) => {
+        console.log('DataBase Connected ');
+        await const data=
+
+    }).catch((err) => {
         console.error('Error connecting ',err);
     });
 }
