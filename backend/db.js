@@ -6,17 +6,23 @@ async function DataBaseConnect() {
     console.log("Connnection in progress")
     await mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
         .then(async () => {
-            console.log('DataBase Connected ');
             const FetchedData = await mongoose.connection.db.collection("FoodList");
-            await FetchedData.find({}).toArray(function (err, res) {
-                if (err) {
-                    console.log("Error Occurred while fetching the data", err)
-                }
+            console.log('DataBase Connected ');
+            console.log(FetchedData.find({}, (err, resp) => {
+
+                if (err) { console.log("Error ") }
+
                 else {
-                    console.log("wait we are fetching the data ")
-                    console.log(res)
+                    resp.toArray((err, res) => {
+
+                        if (err) { console.log("err") }
+
+                        else { console.log(res) }
+                    })
                 }
-            })
+
+            }))
+
 
         }).catch((err) => {
             console.error('Error connecting ', err);
