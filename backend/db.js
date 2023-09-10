@@ -8,12 +8,12 @@ async function DataBaseConnect() {
         .then(async () => {
             const FetchedData = await mongoose.connection.db.collection("FoodList");
             console.log('DataBase Connected ');
-            console.log(FetchedData.find({}, (err, resp) => {
+            await FetchedData.find({}, async(err, resp) => {
 
                 if (err) { console.log("Error ") }
 
                 else {
-                    resp.toArray((err, res) => {
+                   await resp.toArray((err, res) => {
 
                         if (err) { console.log("err") }
 
@@ -21,7 +21,7 @@ async function DataBaseConnect() {
                     })
                 }
 
-            }))
+            })
 
 
         }).catch((err) => {
