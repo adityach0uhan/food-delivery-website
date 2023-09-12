@@ -8,7 +8,7 @@ async function DataBaseConnect() {
         .then(async () => {
             const collection = mongoose.connection.db.collection('FoodList');
             const result = await collection.find({}).toArray();
-            console.log(result);
+            console.log("result");
         }).catch((err) => {
             console.error('Error connecting ', err);
         });
