@@ -1,5 +1,4 @@
 const mongoose = require('mongoose')
-const { schema } = require("Schema")
 
 const userSchema = new mongoose.Schema({
     name: {
@@ -12,7 +11,7 @@ const userSchema = new mongoose.Schema({
     },
     date: {
         type: String,
-        default:Date.now()
+        default:Date.now
     },
     password: {
         type: String,
@@ -24,5 +23,4 @@ const userSchema = new mongoose.Schema({
     }
 }) 
 
-const user = mongoose.model("User", userSchema)
-module.exports={user}
+module.exports = mongoose.model("User", userSchema);
