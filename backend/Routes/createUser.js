@@ -2,22 +2,39 @@ const express = require('express');
 const router = express.Router();
 const user = require('../models/SignIn')
 
-router.post('/createUser', async (req, res) => {
+const { body, validationResult } = require('express-validator');
+router.post('/createUser',
+    [
+        body('email',"Email Galat hai bhai").isEmail(),
+        body('name', "Naam Shi se Likh Le bhai").notEmpty(),
+        body('password',"Password ka size badha bhai ").isLength({ min: 6 })
+    ],
+    async (req, res) => {
+        try {
 
-    try {
-        await user.create({
-            name: "Aditya",
-            email: "aditya@gmail.com",
-            location: "Xyz",
-            password: "Hello"
-        })
-        res.json({ success: true })
+            // validator code -----
+            const result = await validationResult(req);
+            if (result.isEmpty()) {
+                return res.send(`Hello`);
+            } else {
+                res.send({ errors: result.array() });
+            } 
+            // ----validator code
 
-    } catch (error) {
-        res.json({ success: false })
-        console.log(error)
-    }
+            //Mongodb code
+            await user.create({
+                name: req.body.name,
+                email: req.body.email,
+                location: req.body.location,
+                password: req.body.password
+            })
+            res.json({ success: true })
 
-})
+        } catch (error) {
+            res.json({ success: false })
+            console.log(error)
+        }
+
+    })
 
 module.exports = router
