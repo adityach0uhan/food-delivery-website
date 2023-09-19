@@ -7,16 +7,31 @@ const SignUp = () => {
 
   const handelSubmit = async (e) => {
     e.preventDefault();
-
-    // const backendData = await fetch("http://localhost:5000/db/createUser", {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'application/json'
-    //   },
-    //   body: JSON.stringify()
-    // })
-    console.log(formData)
-    // setformData("")
+    try {
+      const backendData = await fetch("http://localhost:5000/db/createUser", {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          password: formData.password,
+          location:formData.location
+        })
+      }) 
+      const resp = await backendData.json()
+      console.log(resp)
+      if (!resp.success) {
+        alert("something is not right")
+      } else {
+        alert(" working")
+      }
+      
+    } catch (err) {
+      console.log(err)
+    }
+    
   }
   const onchange = (e) => {
     setformData({ ...formData, [e.target.name]: e.target.value })
@@ -41,17 +56,17 @@ const SignUp = () => {
 
           <div className="form-group">
             <label htmlFor="exampleInputPassword1">Password</label>
-            <input type="password" className="form-control"  placeholder="Password" name='password' onChange={onchange} value={formData.password} />
+            <input type="password" className="form-control" placeholder="Password" name='password' onChange={onchange} value={formData.password} />
           </div>
 
           <div className="form-group">
             <label htmlFor="exampleInputPassword1">Location</label>
-            <input type="text" className="form-control"  placeholder="Location" name='location' onChange={onchange} value={formData.location} />
+            <input type="text" className="form-control" placeholder="Location" name='location' onChange={onchange} value={formData.location} />
           </div>
 
           <div className="form-group">
             <label htmlFor="exampleInputPassword1">Name</label>
-            <input type="text" className="form-control"  placeholder="Name" name='name' onChange={onchange} value={formData.name} />
+            <input type="text" className="form-control" placeholder="Name" name='name' onChange={onchange} value={formData.name} />
           </div>
 
           <button type="submit" className="btn btn-primary m-3">Submit</button>
