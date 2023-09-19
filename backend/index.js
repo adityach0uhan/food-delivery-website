@@ -3,7 +3,7 @@ const app = express();
 const DataBaseConnect = require('./db');
 const cors = require('cors');
 app.use(cors({
-    origin: 'http://localhost',
+    origin: 'http://localhost:3000',
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     allowedHeaders: 'Content-Type,Authorization',
 }));
