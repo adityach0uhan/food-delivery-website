@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const DataBaseConnect = require('./db');
 const cors = require('cors');
+
 app.use(cors({
     origin: 'http://localhost:3000',
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
@@ -16,6 +17,7 @@ app.get('/', (req, res) => {
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use('/db', require('./Routes/createUser'))
+app.use('/db',require('./Routes/login'))
 
 DataBaseConnect();
 app.listen(5000, () => {
