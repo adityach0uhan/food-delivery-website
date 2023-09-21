@@ -5,15 +5,36 @@ const Login = () => {
 
   const [userDetails, setuserDetails] = useState({ email: '', password: '' })
   const handelSubmit = async (e) => {
-    e.preventDefault()
-    setuserDetails("")
+    try {
+      const backendData = await fetch("http://localhost:5000/user/login", {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          email: userDetails.email,
+          password: userDetails.password,
+        })
+      })
+      const resp = await backendData.json()
+      console.log(resp)
+      if (!resp.success) {
+        alert("something is not right")
+      } else {
+        alert(" working")
+      }
+
+    } catch (err) {
+      console.log(err)
+    }
 
   }
+    
+
+  
   const submitData = (e) => { 
     setuserDetails({ ...userDetails,[e.target.name]:e.target.value})
   }
-
-
   return (
     <div>
       <div className="login-container">

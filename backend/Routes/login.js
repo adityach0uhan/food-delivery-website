@@ -5,12 +5,16 @@ const user = require('../models/SignIn')
 
 router.post('/login', async (req, res) => {
     try {
-        res.send("Login page hit")
-        await user.find({
-            email: req.body.email,
-            password: req.body.password
-        })
-        res.json({ success: false })
+        const userEmail=req.body.email
+        const userDetails= await user.find({ userEmail })
+        if (!userEmail) {
+            return res.json({error:"Galat mat dal bhai"})
+        }
+        else {
+            res.send(userDetails)
+        }
+
+        
 
     } catch (error) {
         res.json({ success: false })
