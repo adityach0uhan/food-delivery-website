@@ -1,23 +1,35 @@
-import React from 'react'
+import React, { useState } from 'react'
 import '../styles/Login.css'
+import { Link } from 'react-router-dom'
 const Login = () => {
+
+  const [userDetails, setuserDetails] = useState({ email: '', password: '' })
+  const handelSubmit = async (e) => {
+    e.preventDefault()
+    setuserDetails("")
+
+  }
+  const submitData = (e) => { 
+    setuserDetails({ ...userDetails,[e.target.name]:e.target.value})
+  }
+
+
   return (
     <div>
-
       <div className="login-container">
-
-        <form action="">
+        <form onSubmit={handelSubmit} >
           <div className="username-div">
 
-          <label htmlFor="">Username</label>
-          <input type="text" />
+            <label htmlFor="">Email</label>
+            <input type="email" placeholder='Email' name='email' onChange={submitData} value={userDetails.email} />
           </div>
 
           <div className="password-div">
-          <label htmlFor=""> Password</label>
-          <input type="text" />
+            <label htmlFor=""> Password</label>
+            <input type="text" placeholder='Password'name='password' onChange={submitData} value={userDetails.password} />
           </div>
-          <input type="submit" />
+          <input type="submit" value="Login" />
+          <Link className='my-3' to={'/createUser'}><input type="button" value={'Create Account'}/></Link>
 
         </form>
 

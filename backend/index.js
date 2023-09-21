@@ -16,8 +16,8 @@ app.get('/', (req, res) => {
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use('/db', require('./Routes/createUser'))
-app.use('/db',require('./Routes/login'))
+app.use('/user', require('./Routes/createUser'))
+app.use('/user',require('./Routes/login'))
 
 DataBaseConnect();
 app.listen(5000, () => {

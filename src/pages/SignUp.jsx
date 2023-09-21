@@ -8,7 +8,7 @@ const SignUp = () => {
   const handelSubmit = async (e) => {
     e.preventDefault();
     try {
-      const backendData = await fetch("http://localhost:5000/db/createUser", {
+      const backendData = await fetch("http://localhost:5000/user/createUser", {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
