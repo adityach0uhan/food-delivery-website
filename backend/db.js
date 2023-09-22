@@ -9,7 +9,6 @@ async function DataBaseConnect() {
             console.log("Database is Connected")
             const collection = mongoose.connection.db.collection('FoodList');
             const result = await collection.find({}).toArray();
-            console.log("result");
         }).catch((err) => {
             console.error('Error connecting ', err);
         });

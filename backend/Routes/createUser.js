@@ -21,14 +21,11 @@ router.post('/createUser',
                     location: req.body.location,
                     password: req.body.password
                 })
-                console.log(req.body.name);
                 res.json({ success: true })
 
             } else {
                 res.send({ errors: result.array() });
             }
-
-
         } catch (error) {
             res.json({ success: false })
             console.log(error)
