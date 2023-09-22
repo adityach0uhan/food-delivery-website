@@ -5,17 +5,22 @@ const user = require('../models/SignIn')
 
 router.post('/login', async (req, res) => {
     try {
-        const userEmail=req.body.email
-        const userDetails= await user.find({ userEmail })
+        const userEmail = req.body.email;
+        const userPassword = req.body.password;
+        const userDetails= await user.findOne({ email:userEmail })
         if (!userEmail) {
-            return res.json({error:"Galat mat dal bhai"})
+            return res.json({error:"Invalid or Null Email"})
+        }
+        if (userDetails === null) {
+            return res.json({error:"No Email found in our Database"})
         }
         else {
-            res.send(userDetails)
+            if (userDetails.password === userPassword) {
+                return res.json({message:"Email and password Matched"})
+            } else {
+                return res.json({message:"Email and Password didn't Matched"})
+            }
         }
-
-        
-
     } catch (error) {
         res.json({ success: false })
         console.log(error)
