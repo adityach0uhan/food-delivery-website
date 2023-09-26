@@ -3,18 +3,18 @@ import '../styles/Login.css'
 import { Link ,useNavigate} from 'react-router-dom'
 const Login = () => {
   const [userDetails, setuserDetails] = useState({ email: '', password: '' })
-  const navigate=useNavigate()
+  const navigate = useNavigate()
   const handelSubmit = async (e) => {
     e.preventDefault();
     try {
-      const backendData = await fetch("localhost:5000/user/login", {
+      const backendData = await fetch("http://localhost:5000/user/login", {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
           email: userDetails.email,
-          password: userDetails.password,
+          password: userDetails.password, 
         })
       })
       const resp = await backendData.json()
@@ -22,12 +22,11 @@ const Login = () => {
       if (!resp.success) {
         alert("invalid password ")
       } else if(resp.success){
-  
         navigate('/')
       }
     
     } catch (err) {
-      console.log(err)
+      console.log("something is not working" +err)
     }
   }
     

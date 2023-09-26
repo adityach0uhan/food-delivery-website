@@ -9,21 +9,28 @@ router.post('/login',
         check('email', "email he nhi dala").notEmpty(),
         check('password', "Password he nhi dala").notEmpty(),
     ], async (req, res) => {
+    
         try {
             const result = await validationResult(req);
+
             if (result.isEmpty()) {
                 const userEmail = req.body.email;
                 const userPassword = req.body.password;
-
                 const userDetails = await user.findOne({ email: userEmail })
                 if (userDetails === null) {
-                    return res.status(200).json({ error: "No Email found in our Database" })
+                    return res.json(200, { success:false })
                 }
                 else {
                     if (userDetails.password === userPassword) {
-                        res.status(200).json({ message: "Email and password Matched" },{success:true})
+                        console.log(userDetails.name)
+                        res.status(200).json({
+                            success: true,
+                            messsage:"Shi hai bhai match hogya email aur password"
+                        })
                     } else {
-                        res.status(401).json({ message: "Email and Password didn't Matched" }, { success: false })
+                        res.status(401).json({
+                            success: false,
+                        message:"kuch to galat hai bhai email aur password match ni hue"})
                     }
                 }
 
@@ -35,8 +42,8 @@ router.post('/login',
 
         }
         catch (error) {
-            res.json({ success: false })
             console.log(error)
+            res.json({ success: false })
         }
     })
 
