@@ -1,14 +1,13 @@
 const express = require('express');
 const router = express.Router();
 const user = require('../models/SignIn')
-const { body, validationResult } = require('express-validator');
-
+const { check, validationResult } = require('express-validator');
+const emailValidator = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/;
 router.post('/login',
     [
-        body('email', "Email galat hai bhai").isEmail(),
-        body('email', "email he nhi dala").notEmpty(),
-        body('password', "Password he nhi dala").notEmpty(),
-
+        check('email').matches(emailValidator).withMessage('Invalid email format'),
+        check('email', "email he nhi dala").notEmpty(),
+        check('password', "Password he nhi dala").notEmpty(),
     ], async (req, res) => {
         try {
             const result = await validationResult(req);
@@ -18,13 +17,13 @@ router.post('/login',
 
                 const userDetails = await user.findOne({ email: userEmail })
                 if (userDetails === null) {
-                    return res.json({ error: "No Email found in our Database" })
+                    return res.status(200).json({ error: "No Email found in our Database" })
                 }
                 else {
                     if (userDetails.password === userPassword) {
-                        res.json({ message: "Email and password Matched" })
+                        res.status(200).json({ message: "Email and password Matched" },{success:true})
                     } else {
-                        res.json({ message: "Email and Password didn't Matched" })
+                        res.status(401).json({ message: "Email and Password didn't Matched" }, { success: false })
                     }
                 }
 

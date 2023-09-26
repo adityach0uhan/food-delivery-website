@@ -21,6 +21,5 @@ app.use('/user',require('./Routes/login'))
 
 DataBaseConnect();
 app.listen(5000, () => {
-
     console.log("App is listening on port 5000");
 })
