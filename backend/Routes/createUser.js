@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const user = require('../models/SignIn')
+const bcrypt = require('bcryptjs');
 
 const { body, validationResult } = require('express-validator');
 router.post('/createUser',
@@ -14,13 +15,20 @@ router.post('/createUser',
             // express-validator code
             const result = await validationResult(req);
             if (result.isEmpty()) {
+                 bcrypt.hash(req.body.password, 10, async function (err, hashPassword) {
+                    if (err) {
+                        console.log("Something broke while encrypting the password")
+                    } else {
+                        console.log("Password Encrypted Successfully")
                 // mondodb code 
                 await user.create({
                     name: req.body.name,
                     email: req.body.email,
                     location: req.body.location,
-                    password: req.body.password
+                    password: hashPassword
                 })
+                    }
+                });
                 res.json({ success: true })
 
             } else {

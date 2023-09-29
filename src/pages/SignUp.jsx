@@ -26,6 +26,7 @@ const SignUp = () => {
         alert("something is not right")
       } else {
         alert(" working")
+        formData("")
       }
       
     } catch (err) {
