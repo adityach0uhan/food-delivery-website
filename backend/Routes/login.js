@@ -14,7 +14,6 @@ router.post('/login',
 
         try {
             const result = await validationResult(req);
-
             if (result.isEmpty()) {
                 const userEmail = req.body.email;
                 const userPassword = req.body.password;
@@ -23,23 +22,23 @@ router.post('/login',
                     return res.json(200, { success: false })
                 }
                 else {
-                    const storedHash = userDetails.password; // Retr
+                    const storedHash = userDetails.password;
                     bcrypt.compare(userPassword, storedHash, function (err, result) {
                         if (err) {
                             res.status(400).json({
                                 success: false,
-                                message:"Something broke while decrypting the password"
+                                message: "Something broke while decrypting the password"
                             })
                         } else if (result) {
                             // Passwords match
                             res.status(200).json({
                                 success: true,
-                                messsage: "Shi hai bhai match hogya email aur password"
+                                message: "You're securely logged in!"
                             })
                         } else {
                             res.status(401).json({
                                 success: false,
-                                message: "kuch to galat hai bhai email aur password match ni hue"
+                                message: "Invalid credentials. Please check your ID and password and try again."
                             })
                         }
                     });
@@ -49,8 +48,6 @@ router.post('/login',
             } else {
                 return res.send({ errors: result.array() });
             }
-
-
 
         }
         catch (error) {
