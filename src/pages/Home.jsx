@@ -3,7 +3,7 @@ import Carousel from '../components/Carousel'
 import FilterPanel from '../components/FilterPanel'
 import Card from '../components/Card'
 import { useState } from 'react'
-// import Footer from '../components/Footer'
+import Footer from '../components/Footer'
 
 const Home = () => {
   const [foodCategory, setfoodCategory] = useState([])
@@ -26,7 +26,7 @@ const Home = () => {
 
 
   }
-  // console.log(foodList[0].name)
+
 
   useEffect(() => {
     loadBackendData();
@@ -38,6 +38,7 @@ const Home = () => {
 
 
       <div className='container bg-green-700 flex justify-center align-center rounded w-1/2 h-10 mt-2 '>
+        <div className='text-white my-2 h-full w-1/4'>Category</div>
         {
           foodCategory.length === 0 ? "Loading" : <FilterPanel data={foodCategory} />
           
@@ -57,7 +58,7 @@ const Home = () => {
 
 
 
-      {/* <div className='footer-container'><Footer/></div> */}
+      <div className='footer-container'><Footer/></div>
 
 
     </div>
