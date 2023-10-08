@@ -1,0 +1,13 @@
+{
+  "_id": "64f847ff3335827435687a35",
+  "CategoryName": "Starter",
+  "name": "Paneer 65",
+  "img": "https://media.istockphoto.com/photos/paneer-tikka-kabab-in-red-sauce-is-an-indian-dish-made-from-chunks-of-picture-id1257507446?b=1&k=20&m=1257507446&s=170667a&w=0&h=Nd7QsslbvPqOcvwu1bY0rEPZXJqwoKTYCal3nty4X-Y=",
+  "options": [
+    {
+      "half": "150",
+      "full": "260"
+    }
+  ],
+  "description": "Made using Indian masalas and Basmati rice. Barbequed pieces of Paneer/Chicken/Mutton were added."
+}

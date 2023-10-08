@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const mongoose = require("mongoose");
-const { BackendData } = require('../db')
+const { BackendConnection } = require('../db')
 
 router.post('/foodData', (req, res) => {
     const FoodlistCollection = mongoose.connection.db.collection('FoodList');
@@ -9,10 +9,10 @@ router.post('/foodData', (req, res) => {
     const FoodCategory = FoodcategoryCollection.find({}).toArray();
     const Foodlist = FoodlistCollection.find({}).toArray();
     FoodCategory.then(Foodcat => {
-        const Foodcategory=Foodcat
+        const Foodcategory = Foodcat
         Foodlist.then(Foodlist => {
-            const BackendData = [Foodlist, Foodcategory]
-            res.send(BackendData)
+
+            res.send({ listOfFood: Foodlist, CategoriesOfFood: Foodcat })
         }).catch(err => {
             console.log(err)
         })
@@ -21,7 +21,5 @@ router.post('/foodData', (req, res) => {
     })
 
 })
-
-
 
 module.exports = router

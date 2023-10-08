@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 const Navbar = () => {
     return (
         <div>
-            <nav className="navbar navbar-expand-lg " style={{ "backgroundColor": " #8be29d " }}>
+            <nav className="navbar navbar-expand-lg " style={{ "backgroundColor": " #FFAA91  " }}>
                 <div className="container-fluid ">
                     <Link className="navbar-brand" to="/"> <i className=" mx-2 fs-3 fa-solid fa-pizza-slice"></i>MoodFood </Link>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -13,7 +13,7 @@ const Navbar = () => {
                     <div className="collapse navbar-collapse" id="navbarNav">
                         <ul className="navbar-nav">
                             <li className="nav-item">
-                                <Link className="nav-link active" aria-current="page" to="/">Home</Link>
+                                <Link className="nav-link active text-grey bg-blue-400" aria-current="page" to="/">Home</Link>
                             </li>
                             <li className="nav-item">
                                 <Link className="nav-link" to="/login">Login</Link>

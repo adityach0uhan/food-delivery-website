@@ -35,11 +35,11 @@ const Login = () => {
   }
   return (
     <div>
-      <div className="login-container">
+      <div className="login-container ">
         <form onSubmit={handelSubmit} >
           <div className="username-div">
 
-            <label htmlFor="">Email</label>
+            <label htmlFor="" >Email</label>
             <input type="text" placeholder='Email' name='email' onChange={submitData} value={userDetails.email} />
           </div>
 

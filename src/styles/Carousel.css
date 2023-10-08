@@ -45,11 +45,11 @@
     height: 100% !important;
 }
 
-.carousel-item img {
+/* .carousel-item img {
     height: 100%;
     opacity: 0.3;
     width: 100% !important;
-}
+} */
 
 
 @media screen and (max-width: 568px) {

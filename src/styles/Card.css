@@ -1,17 +1,31 @@
-.select-btn-parent{
+/* .select-btn-parent {
     width: 100%;
     height: 40px;
     display: flex;
     align-items: center;
     justify-content: space-around;
 }
-.select-btn-parent button{
+
+.select-btn-parent button {
     width: 60%;
     height: 100%;
 }
-.select-btn-parent select{
-    font-size:1.2rem;
+
+.select-btn-parent select {
+    font-size: 1.2rem;
     text-align: center;
     width: 25%;
     height: 100%;
 }
+
+#size {
+    width: 30%;
+    height: 30px;
+    font-size: 0.9rem;
+}
+
+#Quantity {
+    width: 10%;
+    height: 30px;
+    font-size: 0.9rem;
+} */
